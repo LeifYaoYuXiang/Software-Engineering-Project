@@ -10,12 +10,16 @@ import android.widget.Toast;
 import java.text.DecimalFormat;
 
 public class CalculatorActivity extends AppCompatActivity implements View.OnClickListener{
+    //creater Su Zhan && Li ZiGen
     Button btn_0,btn_1,btn_2,btn_3,btn_4,btn_5,btn_6,btn_7,btn_8,btn_9,btn_pt;
     Button btn_mul,btn_div,btn_add,btn_sub;
     Button btn_clr,btn_del,btn_eq;
     EditText et_input;
     boolean clr_flag;
-    double preAnswer=0;//判断et编辑文本框中是否清空
+    /**
+    判断et编辑文本框中是否清空
+    **/
+    double preAnswer=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -104,35 +108,40 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
                 et_input.setText(str+" "+((Button)view ).getText()+" ");
                 break;
             case R.id.btn_clr:
-                if(clr_flag)
+                if(clr_flag) {
                     clr_flag=false;
+                }
                 str="";
                 et_input.setText("");
 
                 break;
-
-            case R.id.btn_del: //判断是否为空，然后在进行删除
+//判断是否为空，然后在进行删除
+            case R.id.btn_del:
                 if(clr_flag){
                     clr_flag=false;
                     str="";
                     et_input.setText("");
                 }
 
-                else if(str!=null&&!str.equals("")){
+                else if(str!=null&&!"".equals(str)){
                     et_input.setText(str.substring(0,str.length()-1));
                 }
                 break;
-
-            case R.id.btn_eq: //单独运算最后结果
-                getResult();//调用下面的方法
+            //单独运算最后结果
+            case R.id.btn_eq:
+                //调用下面的方法
+                getResult();
                 break;
-
+            default:
+                break;
         }
     }
 
     private void getResult() {
         String exp=et_input.getText().toString();
-        if(exp==null||exp.equals("")) return ;
+        if(exp==null|| "".equals(exp)) {
+            return ;
+        }
         //因为没有运算符所以不用运算
         if(!exp.contains(" ")){
             return ;
@@ -151,7 +160,7 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
         String s2=exp.substring(exp.indexOf(" ")+3);
         double cnt=0;
 
-        if(!s1.equals("")&&!s2.equals("")){
+        if(!"".equals(s1) &&!"".equals(s2)){
 
             double d1=0.0;
             double d2=0.0;
@@ -162,25 +171,26 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
             catch (Exception e) {
                 Toast.makeText(this, "输入数据违法", Toast.LENGTH_SHORT).show();
             }
-            if(op.equals("+")){
+            if("+".equals(op)){
                 cnt=d1+d2;
             }
 
-            if(op.equals("-")){
+            if("-".equals(op)){
                 cnt=d1-d2;
             }
-            if(op.equals("×")){
+            if("×".equals(op)){
                 cnt=d1*d2;
             }
 
-            if(op.equals("÷")){
-                if(d2==0) cnt=0;
-                else cnt=d1/d2+(d1%d2);
+            if("÷".equals(op)){
+                if(d2==0) {
+                    cnt=0;
+                } else {
+                    cnt=d1/d2+(d1%d2);
+                }
             }
-
             double answer=cnt;
-
-            if(!s1.contains(".")&&!s2.contains(".")&&!op.equals("÷")) {
+            if(!s1.contains(".")&&!s2.contains(".")&&!"÷".equals(op)) {
                 int res = (int) answer;
                 DecimalFormat df = new DecimalFormat( "0.00");
                 et_input.setText(df.format(res)+"");
@@ -190,12 +200,11 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
                 et_input.setText(df.format(answer)+"");
                 this.preAnswer=answer;
             }
-
         }
 
         //如果s1不是空    s2是空  就执行下一步
 
-        else if(!s1.equals("")&&s2.equals("")){
+        else if(!"".equals(s1) && "".equals(s2)){
             double d1=0.0;
             try{
                 d1=Double.parseDouble(s1);
@@ -204,19 +213,20 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
                 Toast.makeText(this, "输入数据违法", Toast.LENGTH_SHORT).show();
             }
 
-            if(op.equals("+")){
+            if("+".equals(op)){
                 cnt=d1;
                 this.preAnswer=d1;
             }
-            if(op.equals("-")){
+            if("-".equals(op)){
                 cnt=d1;
                 this.preAnswer=d1;
             }
-            if(op.equals("×")){
+            //noinspection AlibabaUndefineMagicConstant
+            if("×".equals(op)){
                 cnt=0;
                 this.preAnswer=0;
             }
-            if(op.equals("÷")){
+            if("÷".equals(op)){
                 cnt=0;
                 this.preAnswer=0;
             }
@@ -225,7 +235,7 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
         }
 
         //如果s1是空    s2不是空  就执行下一步
-        else if(s1.equals("")&&!s2.equals("")){
+        else if("".equals(s1) &&!"".equals(s2)){
             double d2=0.0;
             try{
                 d2=Double.parseDouble(s2);
@@ -233,23 +243,25 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
             catch (Exception e) {
                 Toast.makeText(this, "输入数据违法", Toast.LENGTH_SHORT).show();
             }
-            if(op.equals("+")){
+            if("+".equals(op)){
                 cnt=this.preAnswer+d2;
                 this.preAnswer=d2;
             }
-            if(op.equals("-")){
+            if("-".equals(op)){
                 cnt=preAnswer-d2;
                 this.preAnswer=cnt;
             }
-            if(op.equals("×")){
+            if("×".equals(op)){
                 cnt=this.preAnswer*d2;
                 this.preAnswer=cnt;
 
             }
-            if(op.equals("÷")){
-                if(d2==0)
+            if("÷".equals(op)){
+                if(d2==0) {
                     cnt=0;
-                else cnt=preAnswer/d2+(preAnswer%d2);
+                } else {
+                    cnt=preAnswer/d2+(preAnswer%d2);
+                }
                 this.preAnswer=cnt;
             }
 

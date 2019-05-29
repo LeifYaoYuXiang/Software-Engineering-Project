@@ -5,6 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 public class HistoryDatabaseOpenHelper extends SQLiteOpenHelper {
+    //@author :Yao Yuxiang
     public static final String CREATE_RECORD = "create table Record (" +
             "id integer primary key autoincrement, " +
             "type String, " +

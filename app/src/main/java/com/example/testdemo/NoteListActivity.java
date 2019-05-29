@@ -64,7 +64,6 @@ public class NoteListActivity extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextSubmit(String s) {
-                //Toast.makeText(NoteListActivity.this, "检索的内容是："+s, Toast.LENGTH_SHORT).show();
                 SQLiteDatabase sqLiteDatabase=noteDatabaseOpenHelper.getWritableDatabase();
                 noteList=new ArrayList<>();
                 Cursor cursor=sqLiteDatabase.query("writeNote",null,null,null,null,null,null);

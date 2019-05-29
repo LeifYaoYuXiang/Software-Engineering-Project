@@ -16,25 +16,26 @@ public class NoteContentActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_note_content);
 
-        this.noteContent=findViewById(R.id.note_content);
+        this.noteContent = findViewById(R.id.note_content);
 
-        Intent intent=getIntent();
-        Bundle bundle=intent.getExtras();
-        this.id=bundle.getInt("id");
+        Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
+        this.id = bundle.getInt("id");
 
-        initDataBse(id+1);
+        initDataBse(id + 1);
     }
 
     private void initDataBse(int id) {
-        this.noteDatabaseOpenHelper=new NoteDatabaseOpenHelper(this,"Notes.db",null,2);
-        SQLiteDatabase sqLiteDatabase=noteDatabaseOpenHelper.getWritableDatabase();
-        String stringid=id+"";
-        Cursor cursor=sqLiteDatabase.query("writeNote",new String[]{"content"},"id like ?",new String[]{stringid},null,null,null);
-        if(cursor.moveToFirst()){
+        this.noteDatabaseOpenHelper = new NoteDatabaseOpenHelper(this, "Notes.db", null, 2);
+        SQLiteDatabase sqLiteDatabase = noteDatabaseOpenHelper.getWritableDatabase();
+        String stringid = id+"";
+        Cursor cursor = sqLiteDatabase.query("writeNote",new String[]{"content"}, "id like ?",new String[]{stringid}, null, null,null);
+        if (cursor.moveToFirst()) {
             do {
-                String content=cursor.getString(0);
+                String content = cursor.getString(0);
                 this.noteContent.setText(content);
-            }while(cursor.moveToNext());
+            }
+            while(cursor.moveToNext());
         }
         cursor.close();
     }
@@ -50,7 +51,7 @@ public class NoteContentActivity extends AppCompatActivity {
 //        db.update("writeNote",contentValues,"id=?",new String[]{stringId});
 
 
-        Intent intent=new Intent(NoteContentActivity.this,NoteListActivity.class);
+        Intent intent = new Intent(NoteContentActivity.this,NoteListActivity.class);
         startActivity(intent);
     }
 }

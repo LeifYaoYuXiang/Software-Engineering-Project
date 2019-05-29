@@ -20,19 +20,19 @@ public class MapActivity extends AppCompatActivity {
     private LocationClient locationClient;
     private MapView mMapView;
     private BaiduMap mBaiduMap;
-    private boolean isFirstLoc=true;//记录是否是第一次定位
-    private MyLocationConfiguration.LocationMode locationMode;//当前定位模式
+    private boolean isFirstLoc = true; //记录是否是第一次定位
+    private MyLocationConfiguration.LocationMode locationMode; //当前定位模式
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        locationClient=new LocationClient(getApplicationContext());
+        locationClient = new LocationClient(getApplicationContext());
         locationClient.registerLocationListener(new MyLocationListner());
-        SDKInitializer.initialize(getApplicationContext());//初始化地图SDK
+        SDKInitializer.initialize(getApplicationContext()); //初始化地图SDK
         setContentView(R.layout.activity_map);
 
 
-        mMapView = findViewById(R.id.bmapview);//获取地图组件
-        mBaiduMap=mMapView.getMap();
+        mMapView = findViewById(R.id.bmapview); //获取地图组件
+        mBaiduMap = mMapView.getMap();
         mBaiduMap.setMyLocationEnabled(true);
 
         requestLocation();
@@ -44,7 +44,7 @@ public class MapActivity extends AppCompatActivity {
     }
 
     private void initLocation() {
-        LocationClientOption locationOption=new LocationClientOption();
+        LocationClientOption locationOption = new LocationClientOption();
 
         locationOption.setLocationMode(LocationClientOption.LocationMode.Hight_Accuracy);
         locationOption.setCoorType("bd09ll");
@@ -60,25 +60,25 @@ public class MapActivity extends AppCompatActivity {
         locationOption.setOpenGps(true);
         locationOption.setIsNeedAltitude(false);
         locationOption.setOpenAutoNotifyMode();
-        locationOption.setOpenAutoNotifyMode(3000,1, LocationClientOption.LOC_SENSITIVITY_HIGHT);
+        locationOption.setOpenAutoNotifyMode(3000, 1, LocationClientOption.LOC_SENSITIVITY_HIGHT);
 
         locationClient.setLocOption(locationOption);
     }
 
     private void navigateTo(BDLocation location){
-        if(isFirstLoc){
-            LatLng ll=new LatLng(location.getLatitude(),location.getLongitude());
-            MapStatusUpdate update= MapStatusUpdateFactory.newLatLng(ll);
+        if (isFirstLoc){
+            LatLng ll = new LatLng(location.getLatitude(), location.getLongitude());
+            MapStatusUpdate update = MapStatusUpdateFactory.newLatLng(ll);
             mBaiduMap.animateMapStatus(update);
-            update=MapStatusUpdateFactory.zoomTo(16f);
+            update = MapStatusUpdateFactory.zoomTo(16f);
             mBaiduMap.animateMapStatus(update);
-            isFirstLoc=false;
+            isFirstLoc = false;
         }
-        MyLocationData.Builder builder=new MyLocationData.Builder();
+        MyLocationData.Builder builder = new MyLocationData.Builder();
         builder.latitude(location.getLatitude());
         builder.longitude(location.getLongitude());
 
-        MyLocationData locationData=builder.build();
+        MyLocationData locationData = builder.build();
         mBaiduMap.setMyLocationData(locationData);
     }
     @Override
@@ -89,12 +89,12 @@ public class MapActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         mMapView.onPause();
-        mMapView=null;
+        mMapView = null;
         super.onPause();
     }
     @Override
     protected void onDestroy() {
-        mMapView=null;
+        mMapView = null;
         super.onDestroy();
 
     }
@@ -126,7 +126,7 @@ public class MapActivity extends AppCompatActivity {
 
             int errorCode = location.getLocType();
 
-            if(location.getLocType()==BDLocation.TypeGpsLocation||location.getLocType()==BDLocation.TypeNetWorkLocation){
+            if (location.getLocType() == BDLocation.TypeGpsLocation || location.getLocType()==BDLocation.TypeNetWorkLocation){
                 navigateTo(location);
             }
 

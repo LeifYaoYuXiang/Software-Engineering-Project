@@ -25,6 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HistoryActivity extends AppCompatActivity {
+    //@author:
     private ListView recordList;
     private HistoryDatabaseOpenHelper historyDatabaseOpenHelper;
     private List<record> recordsList=new ArrayList<>();
@@ -72,18 +73,27 @@ public class HistoryActivity extends AppCompatActivity {
         l.setVerticalAlignment(Legend.LegendVerticalAlignment.TOP);
         l.setHorizontalAlignment(Legend.LegendHorizontalAlignment.RIGHT);
         l.setOrientation(Legend.LegendOrientation.VERTICAL);
-        l.setForm(Legend.LegendForm.DEFAULT); //设置图例的形状
-        l.setFormSize(10);                      //设置图例的大小
-        l.setFormToTextSpace(10f);              //设置每个图例实体中标签和形状之间的间距
+        //设置图例的形状
+        l.setForm(Legend.LegendForm.DEFAULT);
+        //设置图例的大小
+        l.setFormSize(10);
+        //设置每个图例实体中标签和形状之间的间距
+        l.setFormToTextSpace(10f);
         l.setDrawInside(false);
-        l.setWordWrapEnabled(true);              //设置图列换行(注意使用影响性能,仅适用legend位于图表下面)
-        l.setXEntrySpace(10f);                  //设置图例实体之间延X轴的间距（setOrientation = HORIZONTAL有效）
-        l.setYEntrySpace(8f);                  //设置图例实体之间延Y轴的间距（setOrientation = VERTICAL 有效）
-        l.setYOffset(0f);                      //设置比例块Y轴偏移量
-        l.setTextSize(18f);                      //设置图例标签文本的大小
+        //设置图列换行(注意使用影响性能,仅适用legend位于图表下面)
+        l.setWordWrapEnabled(true);
+        //设置图例实体之间延X轴的间距（setOrientation = HORIZONTAL有效）
+        l.setXEntrySpace(10f);
+        //设置图例实体之间延Y轴的间距（setOrientation = VERTICAL 有效）
+        l.setYEntrySpace(8f);
+        //设置比例块Y轴偏移量
+        l.setYOffset(0f);
+        //设置图例标签文本的大小
+        l.setTextSize(18f);
         l.setTextColor(Color.parseColor("#333333"));
 
-        ArrayList<PieEntry> pieEntryList = new ArrayList();//数据列表
+        //数据列表
+        ArrayList<PieEntry> pieEntryList = new ArrayList();
 
         int maxTemp=Math.max(this.focusInOneWeekStudySum,this.focusInOneWeekSportsSum);
         int max=Math.max(maxTemp,this.focusInOneWeekMeetingSum);
@@ -166,13 +176,13 @@ public class HistoryActivity extends AppCompatActivity {
                 if(SystemClock.currentThreadTimeMillis()-date<7*24*60*60*1000){
                     this.focusInOneWeekCount++;
                     this.focusInOneWeekSum=this.focusInOneWeekSum+time;
-                    if(type.equals("Study")){
+                    if("Study".equals(type)){
                         this.focusInOneWeekStudySum=this.focusInOneWeekStudySum+time;
                     }
-                    if(type.equals("Sports")){
+                    if("Sports".equals(type)){
                         this.focusInOneWeekSportsSum=this.focusInOneWeekSportsSum+time;
                     }
-                    if(type.equals("Meeting")){
+                    if("Meeting".equals(type)){
                         this.focusInOneWeekMeetingSum=this.focusInOneWeekMeetingSum+time;
                     }
                 }

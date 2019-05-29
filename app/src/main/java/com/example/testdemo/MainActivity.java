@@ -26,6 +26,7 @@ import java.util.ArrayList;
 
 
 public class MainActivity extends AppCompatActivity {
+    //@author Li Jiadi
 
     protected SeekBar seekBar;
     protected TextView textView;
@@ -79,11 +80,11 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(intent);
                 }
                 if (i == 1) {
-                        Intent intent=new Intent(MainActivity.this,NoteListActivity.class);
+                        Intent intent = new Intent(MainActivity.this, NoteListActivity.class);
                        startActivity(intent);
                 }
                 if (i == 2) {
-                       Intent intent=new Intent(MainActivity.this,ProductionActivity.class);
+                       Intent intent = new Intent(MainActivity.this, ProductionActivity.class);
                         startActivity(intent);
                 }
             }
@@ -91,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
     }
 
-    //  make drawer layout clickable
+    /*  make drawer layout clickable */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
@@ -165,25 +166,25 @@ public class MainActivity extends AppCompatActivity {
                     if (type == 1) {
                         Toast.makeText(MainActivity.this, "你选择了专注学习", Toast.LENGTH_SHORT).show();
 
-                        AlertDialog.Builder aBuilder=new AlertDialog.Builder(MainActivity.this);
-                        View view1= LayoutInflater.from(MainActivity.this).inflate(R.layout.seek_bar_time,null);
+                        AlertDialog.Builder aBuilder = new AlertDialog.Builder(MainActivity.this);
+                        View view1 = LayoutInflater.from(MainActivity.this).inflate(R.layout.seek_bar_time, null);
                         aBuilder.setView(view1);
 
                         final AlertDialog dialog = aBuilder.create();
                         dialog.show();
-                        holoCircleSeekBar=dialog.findViewById(R.id.time_toChoose);
-                        textView=dialog.findViewById(R.id.time_diaplay);
-                        Button buttonToSure=dialog.findViewById(R.id.forSure);
-                        Button buttonNotToSure=dialog.findViewById(R.id.NotSure);
+                        holoCircleSeekBar = dialog.findViewById(R.id.time_toChoose);
+                        textView = dialog.findViewById(R.id.time_diaplay);
+                        Button buttonToSure = dialog.findViewById(R.id.forSure);
+                        Button buttonNotToSure = dialog.findViewById(R.id.NotSure);
                         buttonToSure.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
                                 Toast.makeText(MainActivity.this, "选择了"+holoCircleSeekBar.getValue()+"分钟", Toast.LENGTH_SHORT).show();
 
                                 focusTime=holoCircleSeekBar.getValue()*60;
-                                Bundle bundle=new Bundle();
-                                bundle.putInt("timeSet",focusTime);
-                                Intent intent=new Intent(MainActivity.this,FocusOnStudyActivity.class);
+                                Bundle bundle = new Bundle();
+                                bundle.putInt("timeSet", focusTime);
+                                Intent intent = new Intent(MainActivity.this, FocusOnStudyActivity.class);
                                 intent.putExtras(bundle);
                                 startActivity(intent);
                             }
@@ -197,69 +198,31 @@ public class MainActivity extends AppCompatActivity {
                             }
                         });
 
-//
-//                        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-//                            @Override
-//                            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-//                                textView.setText("您选择了" + i + "分钟");
-//                            }
-//
-//                            @Override
-//                            public void onStartTrackingTouch(SeekBar seekBar) {
-//
-//                            }
-//
-//                            @Override
-//                            public void onStopTrackingTouch(SeekBar seekBar) {
-//
-//                            }
-//                        });
-//
-//                        buttonToSure.setOnClickListener(new View.OnClickListener() {
-//                            @Override
-//                            public void onClick(View view) {
-//                                focusTime = seekBar.getProgress() * 60;
-//                                Bundle bundle = new Bundle();
-//                                bundle.putInt("timeSet", focusTime);
-//                                Intent intent = new Intent(MainActivity.this, FocusOnStudyActivity.class);
-//                                intent.putExtras(bundle);
-//                                startActivity(intent);
-//                            }
-//                        });
-//
-//                        buttonNotToSure.setOnClickListener(new View.OnClickListener() {
-//                            @Override
-//                            public void onClick(View view) {
-//                                Toast.makeText(MainActivity.this, "您取消了这一次的专注", Toast.LENGTH_SHORT).show();
-//                                dialog.dismiss();
-//                            }
-//                        });
                     }
 
-                    //
                     if (type == 2) {
                         Toast.makeText(MainActivity.this, "你选择了专注运动", Toast.LENGTH_SHORT).show();
-                        AlertDialog.Builder aBuilder=new AlertDialog.Builder(MainActivity.this);
-                        View view1= LayoutInflater.from(MainActivity.this).inflate(R.layout.seek_bar_time,null);
+                        AlertDialog.Builder aBuilder = new AlertDialog.Builder(MainActivity.this);
+                        View view1 = LayoutInflater.from(MainActivity.this).inflate(R.layout.seek_bar_time,null);
                         aBuilder.setView(view1);
 
                         final AlertDialog dialog = aBuilder.create();
                         dialog.show();
-                        holoCircleSeekBar=dialog.findViewById(R.id.time_toChoose);
+                        holoCircleSeekBar = dialog.findViewById(R.id.time_toChoose);
 
-                        textView=dialog.findViewById(R.id.time_diaplay);
-                        Button buttonToSure=dialog.findViewById(R.id.forSure);
-                        Button buttonNotToSure=dialog.findViewById(R.id.NotSure);
+                        textView = dialog.findViewById(R.id.time_diaplay);
+                        Button buttonToSure = dialog.findViewById(R.id.forSure);
+                        Button buttonNotToSure = dialog.findViewById(R.id.NotSure);
 
                         buttonToSure.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
-                                Toast.makeText(MainActivity.this, "选择了"+holoCircleSeekBar.getValue()+"分钟", Toast.LENGTH_SHORT).show();
-                                focusTime=holoCircleSeekBar.getValue()*60;
+                                Toast.makeText(MainActivity.this, "选择了" + holoCircleSeekBar.getValue() + "分钟", Toast.LENGTH_SHORT).show();
+                                focusTime = holoCircleSeekBar.getValue() * 60;
 
-                                Bundle bundle=new Bundle();
-                                bundle.putInt("timeSet",focusTime);
-                                Intent intent=new Intent(MainActivity.this,FocusOnSportsActivity.class);
+                                Bundle bundle = new Bundle();
+                                bundle.putInt("timeSet", focusTime);
+                                Intent intent = new Intent(MainActivity.this, FocusOnSportsActivity.class);
                                 intent.putExtras(bundle);
                                 startActivity(intent);
                             }
@@ -273,47 +236,8 @@ public class MainActivity extends AppCompatActivity {
                             }
                         });
 
-//                        seekBar = dialog.findViewById(R.id.time_choose);
-//                        textView = dialog.findViewById(R.id.time_diaplay);
-//                        Button buttontoSure = dialog.findViewById(R.id.forSure);
-//                        Button buttonNotToSure = dialog.findViewById(R.id.NotSure);
-//                        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-//                            @Override
-//                            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-//                                textView.setText("您选择了" + i + "分钟");
-//                            }
-//
-//                            @Override
-//                            public void onStartTrackingTouch(SeekBar seekBar) {
-//                            }
-//
-//                            @Override
-//                            public void onStopTrackingTouch(SeekBar seekBar) {
-//                            }
-//                        });
-//
-//                        buttontoSure.setOnClickListener(new View.OnClickListener() {
-//                            @Override
-//                            public void onClick(View view) {
-//                                focusTime = seekBar.getProgress() * 60;
-//                                Bundle bundle = new Bundle();
-//                                bundle.putInt("timeSet", focusTime);
-//                                Intent intent = new Intent(MainActivity.this, FocusOnSportsActivity.class);
-//                                intent.putExtras(bundle);
-//                                startActivity(intent);
-//                            }
-//                        });
-//
-//                        buttonNotToSure.setOnClickListener(new View.OnClickListener() {
-//                            @Override
-//                            public void onClick(View view) {
-//                                Toast.makeText(MainActivity.this, "您取消了这一次的专注", Toast.LENGTH_SHORT).show();
-//                                dialog.dismiss();
-//                            }
-//                        });
                     }
 
-                    //
                     if (type == 3) {
                         Toast.makeText(MainActivity.this, "你选择了专注会议", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(MainActivity.this, FocusOnMeetingActivity.class);

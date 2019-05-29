@@ -15,24 +15,24 @@ public class WriteNoteActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_write_note);
-        Intent intent=getIntent();
-        Bundle bundle=intent.getExtras();
-        this.title=bundle.getString("title");
-        noteswritten=findViewById(R.id.noteWritten);
+        Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
+        this.title = bundle.getString("title");
+        noteswritten = findViewById(R.id.noteWritten);
     }
 
     @Override
     public void onBackPressed() {
-        String content=noteswritten.getText().toString();
-        NoteDatabaseOpenHelper noteDatabaseOpenHelper=new NoteDatabaseOpenHelper(this,"Notes.db",null,2);
+        String content = noteswritten.getText().toString();
+        NoteDatabaseOpenHelper noteDatabaseOpenHelper = new NoteDatabaseOpenHelper(this, "Notes.db", null, 2);
 
-        SQLiteDatabase sqLiteDatabase=noteDatabaseOpenHelper.getWritableDatabase();
+        SQLiteDatabase sqLiteDatabase = noteDatabaseOpenHelper.getWritableDatabase();
 
-        ContentValues contentValues=new ContentValues();
-        contentValues.put("title",title);
-        contentValues.put("content",content);
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("title", title);
+        contentValues.put("content", content);
 
-        sqLiteDatabase.insert("writeNote",null,contentValues);
+        sqLiteDatabase.insert("writeNote", null, contentValues);
         Toast.makeText(this, "存储成功", Toast.LENGTH_SHORT).show();
 
         super.onBackPressed();

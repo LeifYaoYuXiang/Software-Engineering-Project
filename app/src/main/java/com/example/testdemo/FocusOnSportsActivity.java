@@ -16,6 +16,7 @@ import android.widget.Chronometer;
 
 import androidx.annotation.RequiresApi;
 
+//@author: Yao Yuxiang & LiziGen
 public class FocusOnSportsActivity extends AppCompatActivity {
 
     protected int timeSet;
@@ -26,7 +27,7 @@ public class FocusOnSportsActivity extends AppCompatActivity {
     protected Vibrator vibrator;
 
     private boolean finished=false;
-    private String type="Sports";
+    private String type = "Sports";
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
@@ -34,29 +35,29 @@ public class FocusOnSportsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_focus_on_sports);
 
-        Intent intent=getIntent();
-        Bundle bundle=intent.getExtras();
-        this.timeSet=bundle.getInt("timeSet");
-        this.vibrator= (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-        this.chronometer=findViewById(R.id.tick_Sports);
+        Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
+        this.timeSet = bundle.getInt("timeSet");
+        this.vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+        this.chronometer = findViewById(R.id.tick_Sports);
 
-        this.startTime= SystemClock.elapsedRealtime();
+        this.startTime = SystemClock.elapsedRealtime();
 
         chronometer.setBase(this.startTime);
 
         chronometer.setFormat("时间已经过去\n%s");
         chronometer.start();
 
-        Button button=findViewById(R.id.mapDirection);
+        Button button = findViewById(R.id.mapDirection);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent1=new Intent(FocusOnSportsActivity.this,MapActivity.class);
+                Intent intent1 = new Intent(FocusOnSportsActivity.this, MapActivity.class);
                 startActivity(intent1);
             }
         });
 
-        Button button1=findViewById(R.id.compassDirection);
+        Button button1 = findViewById(R.id.compassDirection);
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

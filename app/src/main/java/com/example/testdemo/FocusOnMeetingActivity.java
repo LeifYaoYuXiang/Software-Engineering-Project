@@ -18,7 +18,7 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Toast;
 import android.widget.ToggleButton;
-
+//creater LiZigen
 public class FocusOnMeetingActivity extends AppCompatActivity {
     protected Chronometer chronometer;
     protected long startTime;
@@ -52,7 +52,7 @@ public class FocusOnMeetingActivity extends AppCompatActivity {
                                 Bundle bundle = new Bundle();
                                 bundle.putString("title", title);
 
-                                Intent intent=new Intent(FocusOnMeetingActivity.this,WriteNoteActivity.class);
+                                Intent intent = new Intent(FocusOnMeetingActivity.this, WriteNoteActivity.class);
                                 intent.putExtras(bundle);
                                 startActivity(intent);
                                 Toast.makeText(FocusOnMeetingActivity.this, "写下自己的笔记", Toast.LENGTH_SHORT).show();
@@ -85,7 +85,6 @@ public class FocusOnMeetingActivity extends AppCompatActivity {
                     }
                     AudioManager audioManager = (AudioManager) getApplicationContext().getSystemService(Context.AUDIO_SERVICE);
                     audioManager.setRingerMode(AudioManager.RINGER_MODE_NORMAL);
-//               audioManager.setRingerMode(AudioManager.RINGER_MODE_VIBRATE);
                     Toast.makeText(FocusOnMeetingActivity.this, "关闭静音", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -93,6 +92,7 @@ public class FocusOnMeetingActivity extends AppCompatActivity {
 
     }
 
+    @Override
     public void onBackPressed() {
         AlertDialog.Builder reminderBuilder = new AlertDialog.Builder(FocusOnMeetingActivity.this);
         reminderBuilder.setTitle("退出提示");

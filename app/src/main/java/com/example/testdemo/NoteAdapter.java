@@ -14,16 +14,16 @@ public class NoteAdapter extends ArrayAdapter<Note> {
     private int resourceId;
 
     public NoteAdapter(Context context, int resource, List<Note> objects) {
-        super(context, resource,objects);
-        this.resourceId=resource;
+        super(context, resource, objects);
+        this.resourceId = resource;
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        Note note=getItem(position);
-        View view= LayoutInflater.from(getContext()).inflate(resourceId,parent,false);
+        Note note = getItem(position);
+        View view =  LayoutInflater.from(getContext()).inflate(resourceId, parent,false);
 
-        TextView textView=view.findViewById(R.id.note_title);
+        TextView textView = view.findViewById(R.id.note_title);
         textView.setText(note.getTitle());
 
 

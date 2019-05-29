@@ -7,12 +7,12 @@ public class record {
     private int imageViewId;
     private long date;
 
-    public record(String type,int time,String finished,int imageViewId,long date){
-        this.type=type;
-        this.time=time;
-        this.finished=finished;
-        this.imageViewId=imageViewId;
-        this.date=date;
+    public record(String type, int time ,String finished, int imageViewId, long date){
+        this.type = type;
+        this.time = time;
+        this.finished = finished;
+        this.imageViewId = imageViewId;
+        this.date = date;
     }
 
     public String getType() {

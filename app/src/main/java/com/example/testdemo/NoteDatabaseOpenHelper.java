@@ -16,7 +16,7 @@ public class NoteDatabaseOpenHelper extends SQLiteOpenHelper {
 
     public NoteDatabaseOpenHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
-        this.context=context;
+        this.context = context;
     }
 
     @Override

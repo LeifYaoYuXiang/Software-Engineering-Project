@@ -41,13 +41,13 @@ public class FeedbackActivity extends AppCompatActivity {
         if(finished){
             stringBuilder=new StringBuilder();
             stringBuilder.append("真棒!为自己加油喝彩！\n");
-            if(type.equals("Meeting")){
+            if("Meeting".equals(type)){
                 stringBuilder.append("这次会议上专注了");
             }
-            if(type.equals("Sports")){
+            if("Sports".equals(type)){
                 stringBuilder.append("这次运动中专注了");
             }
-            if(type.equals("Study")){
+            if("Study".equals(type)){
                 stringBuilder.append("这次学习上专注了");
             }
             stringBuilder.append(minute+"分钟"+second+"秒"+"\n");
@@ -55,13 +55,13 @@ public class FeedbackActivity extends AppCompatActivity {
         }else{
             stringBuilder=new StringBuilder();
             stringBuilder.append("太遗憾了\n");
-            if(type.equals("Meeting")){
+            if("Meeting".equals(type)){
                 stringBuilder.append("这次会议上专注了");
             }
-            if(type.equals("Sports")){
+            if("Sports".equals(type)){
                 stringBuilder.append("这次运动中专注了");
             }
-            if(type.equals("Study")){
+            if("Study".equals(type)){
                 stringBuilder.append("这次学习上专注了");
             }
             stringBuilder.append(minute+"分钟"+second+"秒"+"\n");

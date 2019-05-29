@@ -7,23 +7,23 @@ import android.os.Bundle;
 import com.trncic.library.DottedProgressBar;
 
 public class WelcomeActivity extends AppCompatActivity {
+
     private  final int SPLASH_DISPLAY_LENGHT = 6000;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
 
-        DottedProgressBar dottedProgressBar=findViewById(R.id.welcomeDottedProgress);
+        DottedProgressBar dottedProgressBar = findViewById(R.id.welcomeDottedProgress);
         dottedProgressBar.startProgress();
 
         new android.os.Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent=new Intent(WelcomeActivity.this,MainActivity.class);
+                Intent intent = new Intent(WelcomeActivity.this, MainActivity.class);
                 startActivity(intent);
                 WelcomeActivity.this.finish();
             }
-        },SPLASH_DISPLAY_LENGHT);
-
+        }, SPLASH_DISPLAY_LENGHT);
     }
 }

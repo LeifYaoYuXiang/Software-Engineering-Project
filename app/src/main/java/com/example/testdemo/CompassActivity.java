@@ -11,11 +11,11 @@ import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
 
 public class CompassActivity extends AppCompatActivity implements SensorEventListener {
-    ImageView compassImage;
+    private ImageView compassImage;
     // 记录指南针图片转过的角度
-    float currentDegree = 0f;
+    private float currentDegree = 0f;
     // 定义Sensor管理器
-    SensorManager mSensorManager;
+    private SensorManager mSensorManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,7 +35,6 @@ public class CompassActivity extends AppCompatActivity implements SensorEventLis
     @Override
     protected void onPause() {
         // 取消注册
-        //mSensorManager.unregisterListener(this);
         super.onPause();
     }
 
